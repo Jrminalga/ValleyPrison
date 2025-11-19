@@ -1,14 +1,14 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "Valley Prison Test",
+   Name = "Valley Prison",
    Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
-   LoadingTitle = "idk",
+   LoadingTitle = "Welcome!",
    LoadingSubtitle = "by Mav",
    ShowText = "Rayfield", -- for mobile users to unhide rayfield, change if you'd like
    Theme = "Default", -- Check https://[Log in to view URL]
 
-   ToggleUIKeybind = "K", -- The keybind to toggle the UI visibility (string like "K" or Enum.KeyCode)
+   ToggleUIKeybind = "RightShift", -- The keybind to toggle the UI visibility (string like "K" or Enum.KeyCode)
 
    DisableRayfieldPrompts = false,
    DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
@@ -20,7 +20,7 @@ local Window = Rayfield:CreateWindow({
    },
 
    Discord = {
-      Enabled = true, -- Prompt the user to join your Discord server if their executor supports it
+      Enabled = false, -- Prompt the user to join your Discord server if their executor supports it
       Invite = "2aFK63fEBt", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
       RememberJoins = false -- Set this to false to make them join the discord every time they load it up
    },
@@ -29,7 +29,7 @@ local Window = Rayfield:CreateWindow({
    KeySettings = {
       Title = "Untitled",
       Subtitle = "Key System",
-      Note = "idk", -- Use this to tell the user how to get a key
+      Note = "Join Discord For Key", -- Use this to tell the user how to get a key
       FileName = "Valley", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
       SaveKey = false, -- The user's key will be saved, but if you change the key, they will be unable to use your script
       GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
@@ -40,9 +40,11 @@ local Window = Rayfield:CreateWindow({
 local MainTab = Window:CreateTab("home", nil) -- Title, Image
 local MainSection = MainTab:CreateSection("Section Example")
 
-local Button = MainTab:CreateButton({
-   Name = "Button Example",
-   Callback = function()
+local Toggle = MainTab:CreateToggle({
+   Name = "infinite jump",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
             --Toggles the infinite jump between on or off on every script run
 _G.infinjump = not _G.infinjump
 
@@ -70,9 +72,11 @@ end
    end,
 })
 
-local Button = MainTab:CreateButton({
-   Name = "inf stamina",
-   Callback = function()
+local Toggle = MainTab:CreateToggle({
+   Name = "Inf Stamina",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
       _G.UnlimitedStamina = true -- Toggle for unlimited stamina
 
 local Players = game:GetService('Players')
@@ -165,9 +169,11 @@ end)
    end,
 })
 
-local Button = MainTab:CreateButton({
-   Name = "esp",
-   Callback = function()
+local Toggle = MainTab:CreateToggle({
+   Name = "ESP",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
         --//Toggle\\--
 getgenv().Toggle = true -- This toggles the esp, turning it to false will turn it off
 getgenv().TC = false -- This toggles team check, turning it on will turn on team check
@@ -311,7 +317,7 @@ local Button = TeleportTab:CreateButton({
    Name = "keycard",
    Callback = function()
             local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
-rootPart.CFrame = workspace.Map:GetChildren()[62].Model.Model:GetChildren()[8].Part.CFrame
+rootPart.CFrame = workspace.Map:GetChildren()[67].Model.Model:GetChildren()[8].Part.CFrame
    end,
 })
 
