@@ -166,7 +166,7 @@ end)
 })
 
 local Button = MainTab:CreateButton({
-   Name = "Button Example",
+   Name = "esp",
    Callback = function()
         --//Toggle\\--
 getgenv().Toggle = true -- This toggles the esp, turning it to false will turn it off
@@ -316,5 +316,9 @@ rootPart.CFrame = workspace.Map:GetChildren()[62].Model.Model:GetChildren()[8].P
 })
 
 local Button = TeleportTab:CreateButton({
-    Name = "noclip",
+    Name = "Directors Office",
     Callback = function()
+			 local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+rootPart.CFrame = workspace.Map:GetChildren()[265].CFrame
+	end,
+ })
